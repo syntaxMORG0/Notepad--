@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            font-family: monospace;
+            color: white;
+            margin-block: 1em, 1em;
+            overflow: hidden;
+        }
+        #editor_field {
+            width: 100%;
+            height: 95vh;
+            border: hidden;
+            outline: none;
+            overflow: auto;
+        }
+        button {
+            background-color: rgba(255, 255, 255, 0.566);
+            color: white;
+            border: hidden;
+            font-family: monospace;
+            cursor: pointer;
+            width: fit-content;
+            padding: 0;
+            margin: 0;
+            background: none;
+            text-decoration: none;
+        }
+        button:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Notepad--</title>
+</head>
+<body>
+    <button id="save_button">Save</button> • <button id="load_button"><ion-icon name="logo-github"></ion-icon>github</button>
+    <br><div style="height: 10px;"></div>
+    <div id="editor_field" contenteditable="true"></div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const editorField = document.getElementById('editor_field');
+        const saveButton = document.getElementById('save_button');
+
+        saveButton.onclick = () => {
+            const a = document.createElement('a');
+            a.href = 'data:text/html,' + encodeURIComponent(editorField.innerHTML);
+            a.download = 'doc.txt';
+            a.click();
+        };
+    </script>
+</body>
+</html>
